@@ -1,100 +1,20 @@
-/* import React from 'react';
-import {createRoot} from 'react-dom/client';
-
-const container = document.querySelector('#root');
-const root = createRoot(container);
-root.render(<Application />); */
-
-
-
 import React, { useState } from 'react';
 import Paper from '@material-ui/core/Paper';
 import pic from "./images/vector.png";
-import { AppBar, Button, CssBaseline, Grid, Link, Toolbar, Typography, Box, FormControl, InputLabel, OutlinedInput, IconButton } from '@material-ui/core';
+import {Button, CssBaseline, Grid, Link, Typography, Box, FormControl, InputLabel, OutlinedInput, IconButton } from '@material-ui/core';
 import GoogleButton from 'react-google-button';
-import { createTheme, makeStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from "@mui/material/InputAdornment";
 import { purple } from '@material-ui/core/colors';
-import darklogo from "./images/Logo.png";
-import lightlogo from "./images/logo2.png";
 import Divider from '@material-ui/core/Divider';
 import clsx from 'clsx';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-
-
-const lightTheme = createTheme({
-    palette: {
-        primary: {
-            main: "#32C08D",
-            contrastText: "#fafafa",
-        },
-        secondary: {
-            main: "#3664F9",
-        },
-        tertiary: {
-            main: "#7F5FFF",
-            contrastText: "#fafafa",
-        },
-        info: {
-            main: "#7F5FFF",
-        },
-        warning: {
-            main: "#FFCC26",
-        },
-
-        error: {
-            main: "#ff5c41",
-        },
-        default: {
-            main: "#bfbfbf",
-        },
-
-        mode: "light",
-
-        background: {
-            default: "#fafafa",
-        },
-    },
-});
-
-const darkTheme = createTheme({
-    palette: {
-        primary: {
-            main: "#32C08D",
-            contrastText: "#fafafa",
-        },
-        secondary: {
-            main: "#3664F9",
-        },
-        tertiary: {
-            main: "#7F5FFF",
-            contrastText: "#fafafa",
-        },
-        info: {
-            main: "#7F5FFF",
-        },
-        warning: {
-            main: "#FFCC26",
-        },
-
-        error: {
-            main: "#ff5c41",
-        },
-        default: {
-            main: "#bfbfbf",
-        },
-        mode: "dark",
-
-        background: {
-            default: "#121212",
-        },
-    },
-});
-
-
+import { MuiThemeProvider } from '@material-ui/core/styles';
+import { darkTheme } from './themes/dark';
+import { lightTheme } from './themes/light';
+import { App_bar } from './App_Bar';
 
 const ColorButton = withStyles((t) => ({
     root: {
@@ -110,26 +30,18 @@ const ColorButton = withStyles((t) => ({
 
 
 
-const App = () => {
-    const [isDarkTheme, setIsDarkTheme] = useState(false);
+const SignIn = () => {
+    const [isDarkTheme, setIsDarkTheme] = useState(true);
 
-    const paperStyle = {
-        padding: "40px 72px 36px 72px",
-    };
+    
     return (
         <MuiThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
             <CssBaseline />
             <Box bgcolor="background.default">
-                <AppBar position="static" color="transparent" elevation={0}>
-                    <Toolbar>
-                        <Box>
-                            <img alt="mh" src={isDarkTheme ? darklogo : lightlogo} height={34} />
-                        </Box>
-                    </Toolbar>
-                </AppBar>
+                {App_bar(isDarkTheme)}
                 <Grid container justifyContent='center' alignItems='center' >
                     <Grid item md={4}>
-                        {Login(paperStyle, isDarkTheme)}
+                        {Login( isDarkTheme)}
                     </Grid>
                 </Grid>
             </Box>
@@ -138,10 +50,9 @@ const App = () => {
     );
 }
 
-export default App;
+export default SignIn;
 
-
-const Login = (paperStyle, isDarkTheme) => {
+export const Login = (isDarkTheme) => {
     const useStyles = makeStyles(() => ({
         root: {
             '& > *': {
@@ -151,7 +62,7 @@ const Login = (paperStyle, isDarkTheme) => {
     
         paperRoot: {
             backgroundColor : isDarkTheme ? '#232323': '#FFFFFFF',
-            padding: "40px 72px 36px 72px",
+            padding: "40px 72px 37px 72px",
             minWidth: "400px",
             color :isDarkTheme ? '#FFFFFF': '#121212', 
         },
@@ -159,7 +70,7 @@ const Login = (paperStyle, isDarkTheme) => {
     const classes = useStyles();
     const [values, setValues] = React.useState({
         amount: '',
-        password: '',
+        password: '', 
         weight: '',
         weightRange: '',
         showPassword: false,
@@ -177,7 +88,7 @@ const Login = (paperStyle, isDarkTheme) => {
         event.preventDefault();
     };
     return (
-        <Paper className={classes.paperRoot} elevation={10} style={paperStyle}>
+        <Paper className={classes.paperRoot} elevation={10} >
             <Grid container direction='column' justifyContent='center' alignItems='stretch' spacing={2}>
                 <Grid item align='center'>
                     <Box >
