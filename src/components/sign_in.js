@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import pic from "./images/vector.png";
-import { Button, CssBaseline, Grid, Link, Typography, Box, FormControl, InputLabel, OutlinedInput, IconButton } from '@material-ui/core';
+import { Button, Grid, Link, Typography, Box, FormControl, InputLabel, OutlinedInput, IconButton } from '@material-ui/core';
 import GoogleButton from 'react-google-button';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -11,10 +11,6 @@ import InputAdornment from "@mui/material/InputAdornment";
 import { purple } from '@material-ui/core/colors';
 import Divider from '@material-ui/core/Divider';
 import clsx from 'clsx';
-import { MuiThemeProvider } from '@material-ui/core/styles';
-import { darkTheme } from './themes/dark';
-import { lightTheme } from './themes/light';
-import { App_bar } from './App_Bar';
 
 const ColorButton = withStyles((t) => ({
     root: {
@@ -27,31 +23,27 @@ const ColorButton = withStyles((t) => ({
     },
 }))(Button);
 
-
-
-
-const SignIn = () => {
-    const [isDarkTheme, setIsDarkTheme] = useState(true);
-
-
-    return (
-        <MuiThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
-            <CssBaseline />
-            <Box bgcolor="background.default">
-                {App_bar(isDarkTheme)}
-                <Grid container justifyContent='center' alignItems='center' >
-                    <Grid item md={4}>
-                        {Login(isDarkTheme)}
-                    </Grid>
-                </Grid>
-            </Box>
-        </MuiThemeProvider>
-
-    );
-}
-
-export default SignIn;
-
+const CssTextField = withStyles({
+    root: {
+        '& label.Mui-focused': {
+            color: 'green',
+        },
+        '& .MuiInput-underline:after': {
+            borderBottomColor: 'green',
+        },
+        '& .MuiOutlinedInput-root': {
+            '& fieldset': {
+                borderColor: 'red' ,
+            },
+            '&:hover fieldset': {
+                borderColor: 'yellow',
+            },
+            '&.Mui-focused fieldset': {
+                borderColor: 'green',
+            },
+        },
+    },
+})(TextField);
 export const Login = (isDarkTheme) => {
     const useStyles = makeStyles(() => ({
         root: {
@@ -108,7 +100,7 @@ export const Login = (isDarkTheme) => {
                     <Divider variant='middle' />
                 </Grid>
                 <Grid item>
-                    <TextField id="email" label="Email address" variant="outlined" margin='normal' fullWidth color='default' />
+                    <CssTextField id="email" label="Email address" variant="outlined" margin='normal' color='secondary' fullWidth></CssTextField>
                 </Grid>
                 <Grid item>
                     <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
