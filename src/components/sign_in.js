@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Paper from '@material-ui/core/Paper';
 import pic from "./images/vector.png";
-import {Button, CssBaseline, Grid, Link, Typography, Box, FormControl, InputLabel, OutlinedInput, IconButton } from '@material-ui/core';
+import { Button, CssBaseline, Grid, Link, Typography, Box, FormControl, InputLabel, OutlinedInput, IconButton } from '@material-ui/core';
 import GoogleButton from 'react-google-button';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -33,7 +33,7 @@ const ColorButton = withStyles((t) => ({
 const SignIn = () => {
     const [isDarkTheme, setIsDarkTheme] = useState(true);
 
-    
+
     return (
         <MuiThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
             <CssBaseline />
@@ -41,7 +41,7 @@ const SignIn = () => {
                 {App_bar(isDarkTheme)}
                 <Grid container justifyContent='center' alignItems='center' >
                     <Grid item md={4}>
-                        {Login( isDarkTheme)}
+                        {Login(isDarkTheme)}
                     </Grid>
                 </Grid>
             </Box>
@@ -59,18 +59,18 @@ export const Login = (isDarkTheme) => {
                 width: '100%'
             },
         },
-    
+
         paperRoot: {
-            backgroundColor : isDarkTheme ? '#232323': '#FFFFFFF',
+            backgroundColor: isDarkTheme ? '#232323' : '#FFFFFFF',
             padding: "40px 72px 37px 72px",
             minWidth: "400px",
-            color :isDarkTheme ? '#FFFFFF': '#121212', 
+            color: isDarkTheme ? '#FFFFFF' : '#121212',
         },
     }));
     const classes = useStyles();
     const [values, setValues] = React.useState({
         amount: '',
-        password: '', 
+        password: '',
         weight: '',
         weightRange: '',
         showPassword: false,
@@ -108,7 +108,7 @@ export const Login = (isDarkTheme) => {
                     <Divider variant='middle' />
                 </Grid>
                 <Grid item>
-                    <TextField  id="email" label="Email address" variant="outlined" margin='normal' fullWidth color = 'default'/>
+                    <TextField id="email" label="Email address" variant="outlined" margin='normal' fullWidth color='default' />
                 </Grid>
                 <Grid item>
                     <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
@@ -154,7 +154,7 @@ export const Login = (isDarkTheme) => {
                     </Box>
                 </Grid>
                 <Grid item align="left">
-                    Don’t have an account?
+                    <span>Don’t have an account? </span>
                     <Link
                         style={{
                             color: purple[500],
