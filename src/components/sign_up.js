@@ -8,10 +8,10 @@ import pic from './images/n_img.png';
 import GoogleButton from 'react-google-button';
 import { purple } from '@material-ui/core/colors';
 
-const ColorButton = withStyles((t) => ({
+const ColorButton = withStyles((theme) => ({
     root: {
         width: '100%',
-        color: t.palette.getContrastText(purple[500]),
+        color: theme.palette.getContrastText(purple[500]),
         backgroundColor: purple[500],
         '&:hover': {
             backgroundColor: purple[700],
@@ -21,12 +21,12 @@ const ColorButton = withStyles((t) => ({
 
 
 const SignUp = () => {
-    const [isDarkTheme, setIsDarkTheme] = useState(false);
+    const [isDarkTheme, setIsDarkTheme] = useState(true);
 
     return (
         <MuiThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
             <CssBaseline />
-            <Box bgColor="background.default">
+            <Box bgcolor="background.default">
                 {App_bar(isDarkTheme)}
                 <Grid container justifyContent="center" alignItems="center">
                     <Grid item md={8}>
@@ -58,8 +58,8 @@ export const SignPage = (isDarkTheme) => {
     return (
         <Paper className={classes.paperRoot} elevation={10} >
             <Grid container direction="row" justifyContent="center" spacing={10}>
-                <Grid item align="center">
-                    <Box alignContent= "down">
+                <Grid item >
+                    <Box align="center">
                         <img alt="img" src={pic} />
                     </Box>
                 </Grid>
@@ -98,30 +98,28 @@ export const SignPage = (isDarkTheme) => {
                             </Grid>
                         </Grid>
                         <Grid item>
-                            <TextField id="email" label="Email address" variant="outlined" margin='normal' fullWidth color='default' />
+                            <TextField id="email" label="Email address" variant="outlined" margin='normal' fullWidth />
                         </Grid>
                         <Grid item>
-                            <TextField id="password" label="Password" variant="outlined" margin='normal' fullWidth color='default' />
+                            <TextField id="password" label="Password" variant="outlined" margin='normal' fullWidth />
                         </Grid>
                         <Grid item align='left'>
-                            <Typography variant="body3">
-                                <span>By registering, you agree to Monday Hero’s </span>
-                            </Typography>
+                                <span >By registering, you agree to Monday Hero’s </span>
                             <Link
                                 style={{
                                     color: '#9C77DC',
                                 }}
-                                variant="body3"
+                                variant="body2"
                                 component="button"
                             >
                                 Terms of service
                             </Link>
-                            <Typography variant="body3"><span> and </span></Typography>
+                            <span> and </span>
                             <Link
                                 style={{
                                     color: '#9C77DC',
                                 }}
-                                variant="body3"
+                                variant="body2"
                                 component="button"
                             >
                                 Privacy Policy.
@@ -135,15 +133,16 @@ export const SignPage = (isDarkTheme) => {
                             </Box>
                         </Grid>
                         <Grid item align="left">
-                            <Typography variant="body3">
-                                <span>Already have an account? </span>
-                            </Typography>
+                            <span>Already have an account? </span>
                             <Link
                                 style={{
                                     color: '#9C77DC',
                                 }}
                                 component="button"
-                                variant="body3"
+                                variant="body2"
+                                onClick={() => {
+                                    console.info("I'm a forget.");
+                                }}
                             >
                                 Login
                             </Link>
