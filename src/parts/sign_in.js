@@ -8,42 +8,21 @@ import TextField from '@material-ui/core/TextField';
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from "@mui/material/InputAdornment";
-import { purple } from '@material-ui/core/colors';
+import {colors} from './lib/themes/colors';
 import Divider from '@material-ui/core/Divider';
 import clsx from 'clsx';
 
 const ColorButton = withStyles((t) => ({
     root: {
         width: '100%',
-        color: t.palette.getContrastText(purple[500]),
-        backgroundColor: purple[500],
+        color: t.palette.getContrastText(colors.purple[500]),
+        backgroundColor: colors.purple[500],
         '&:hover': {
-            backgroundColor: purple[700],
+            backgroundColor: colors.purple[700],
         },
     },
 }))(Button);
 
-const CssTextField = withStyles({
-    root: {
-        '& label.Mui-focused': {
-            color: 'green',
-        },
-        '& .MuiInput-underline:after': {
-            borderBottomColor: 'green',
-        },
-        '& .MuiOutlinedInput-root': {
-            '& fieldset': {
-                borderColor: 'red' ,
-            },
-            '&:hover fieldset': {
-                borderColor: 'yellow',
-            },
-            '&.Mui-focused fieldset': {
-                borderColor: 'green',
-            },
-        },
-    },
-})(TextField);
 export const Login = (isDarkTheme) => {
     const useStyles = makeStyles(() => ({
         root: {
@@ -57,6 +36,9 @@ export const Login = (isDarkTheme) => {
             padding: "40px 72px 37px 72px",
             minWidth: "400px",
             color: isDarkTheme ? '#FFFFFF' : '#121212',
+        },
+        dividerColor: {
+            backgroundColor: "#E2E2E2",
         },
     }));
     const classes = useStyles();
@@ -97,10 +79,10 @@ export const Login = (isDarkTheme) => {
                     <GoogleButton style={{ width: '100%' }} onClick={() => { console.log('Google Button clicked') }} />
                 </Grid>
                 <Grid item>
-                    <Divider variant='middle' />
+                    <Divider variant='middle' classname='classes.dividerColor'/>
                 </Grid>
                 <Grid item>
-                    <CssTextField id="email" label="Email address" variant="outlined" margin='normal' color='secondary' fullWidth></CssTextField>
+                    <TextField id="email" label="Email address" variant="outlined" margin='normal' fullWidth></TextField>
                 </Grid>
                 <Grid item>
                     <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
@@ -130,7 +112,7 @@ export const Login = (isDarkTheme) => {
                     <Link
                         href='#'
                         style={{
-                            color: purple[500],
+                            color: colors.purple[500],
                         }}
                         component="button"
                         variant="body2"
@@ -149,7 +131,7 @@ export const Login = (isDarkTheme) => {
                     <span>Don’t have an account? </span>
                     <Link
                         style={{
-                            color: purple[500],
+                            color: colors.purple[500],
                         }}
                         component="button"
                         variant="body2"

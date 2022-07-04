@@ -1,6 +1,6 @@
 import { AppBar, Box, Toolbar } from "@material-ui/core";
-import darklogo from "./images/Logo.png";
-import lightlogo from "./images/logo2.png";
+import darklogo from "../images/Logo.png";
+import lightlogo from "../images/logo2.png";
 
 export const App_bar= (isDarkTheme) => {
     return (

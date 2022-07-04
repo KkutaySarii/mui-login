@@ -1,27 +1,27 @@
 import { Box, Button, CssBaseline, FormControl, Grid, InputLabel, makeStyles, MuiThemeProvider, Paper, Select, TextField, Typography, withStyles } from "@material-ui/core";
 import React, { useState } from "react";
-import { App_bar } from "./App_Bar";
+// import { App_bar } from "./App_Bar";
 import pic from './images/tell_us.png';
-import { darkTheme } from './themes/dark';
-import { lightTheme } from './themes/light';
+// import { darkTheme } from './themes/dark';
+// import { lightTheme } from './themes/light';
 import { purple } from '@material-ui/core/colors';
 
-const LoginQue = () => {
-    const [isDarkTheme, setIsDarkTheme] = useState(false);
-    return (
-        <MuiThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
-            <CssBaseline />
-            <Box bgcolor="background.default">
-                {App_bar(isDarkTheme)}
-                <Grid container justifyContent="center" alignItems="center">
-                    <Grid item md={4}>
-                        {BaseCom(isDarkTheme)}
-                    </Grid>
-                </Grid>
-            </Box>
-        </MuiThemeProvider>
-    );
-};
+// const LoginQue = () => {
+//     const [isDarkTheme, setIsDarkTheme] = useState(false);
+//     return (
+//         <MuiThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
+//             <CssBaseline />
+//             <Box bgcolor="background.default">
+//                 {App_bar(isDarkTheme)}
+//                 <Grid container justifyContent="center" alignItems="center">
+//                     <Grid item md={4}>
+//                         {BaseCom(isDarkTheme)}
+//                     </Grid>
+//                 </Grid>
+//             </Box>
+//         </MuiThemeProvider>
+//     );
+// };
 
 const ColorButton = withStyles((t) => ({
     root: {
@@ -33,7 +33,7 @@ const ColorButton = withStyles((t) => ({
     },
 }))(Button);
 
-export default LoginQue;
+// export default LoginQue;
 
 export const BaseCom = (isDarkTheme) => {
     const useStyles = makeStyles(() => ({

@@ -1,7 +1,7 @@
 import { Grid } from "@material-ui/core"
-import { SignPage } from "../sign_up";
-import { Login } from "../sign_in";
-import { BaseCom } from "../login-que";
+import { SignPage } from "../../sign_up";
+import { Login } from "../../sign_in";
+import { BaseCom } from "../../login-que";
 
 export const containerMain = (name, isDarkTheme) => {
     if (name === 1) {

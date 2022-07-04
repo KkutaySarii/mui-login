@@ -1,9 +1,9 @@
 import { Box, Button, CssBaseline, Divider, Grid, Link, Paper, TextField, Typography } from "@material-ui/core";
 import { makeStyles, MuiThemeProvider, withStyles } from '@material-ui/core/styles';
 import React, { useState } from "react";
-import { darkTheme } from './themes/dark';
-import { lightTheme } from './themes/light';
-import { App_bar } from './App_Bar';
+// import { darkTheme } from './themes/lib/dark/dark';
+// import { lightTheme } from './themes/lib/light/light';
+// import { App_bar } from './App_Bar';
 import pic from './images/n_img.png';
 import GoogleButton from 'react-google-button';
 import { purple } from '@material-ui/core/colors';
@@ -20,25 +20,25 @@ const ColorButton = withStyles((theme) => ({
 }))(Button);
 
 
-const SignUp = () => {
-    const [isDarkTheme, setIsDarkTheme] = useState(true);
+// const SignUp = () => {
+//     const [isDarkTheme, setIsDarkTheme] = useState(true);
 
-    return (
-        <MuiThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
-            <CssBaseline />
-            <Box bgcolor="background.default">
-                {App_bar(isDarkTheme)}
-                <Grid container justifyContent="center" alignItems="center">
-                    <Grid item md={8}>
-                        {SignPage(isDarkTheme)}
-                    </Grid>
-                </Grid>
-            </Box>
-        </MuiThemeProvider>
-    );
-};
+//     return (
+//         <MuiThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
+//             <CssBaseline />
+//             <Box bgcolor="background.default">
+//                 {App_bar(isDarkTheme)}
+//                 <Grid container justifyContent="center" alignItems="center">
+//                     <Grid item md={8}>
+//                         {SignPage(isDarkTheme)}
+//                     </Grid>
+//                 </Grid>
+//             </Box>
+//         </MuiThemeProvider>
+//     );
+// };
 
-export default SignUp;
+// export default SignUp;
 
 export const SignPage = (isDarkTheme) => {
     const useStyles = makeStyles(() => ({
@@ -84,7 +84,6 @@ export const SignPage = (isDarkTheme) => {
                                         id="name"
                                         label="Name"
                                         variant="outlined"
-                                        color="secondary"
                                     />
                                 </Grid>
                                 <Grid item align="right" xs={6} sm={6} >
@@ -92,7 +91,6 @@ export const SignPage = (isDarkTheme) => {
                                         id="surname"
                                         label="Surname"
                                         variant="outlined"
-                                        color="secondary"
                                     />
                                 </Grid>
                             </Grid>
