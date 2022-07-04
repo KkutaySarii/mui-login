@@ -1,14 +1,13 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import pic from "./images/vector.png";
-import { Button, Grid, Link, Typography, Box, FormControl, InputLabel, OutlinedInput, IconButton } from '@material-ui/core';
+import { Button, Grid, Link, Typography, Box, FormControl, InputLabel, OutlinedInput, IconButton, TextField } from '@material-ui/core';
 import GoogleButton from 'react-google-button';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from "@mui/material/InputAdornment";
-import {colors} from './lib/themes/colors';
+import { colors } from './lib/themes/colors';
 import Divider from '@material-ui/core/Divider';
 import clsx from 'clsx';
 
@@ -79,10 +78,10 @@ export const Login = (isDarkTheme) => {
                     <GoogleButton style={{ width: '100%' }} onClick={() => { console.log('Google Button clicked') }} />
                 </Grid>
                 <Grid item>
-                    <Divider variant='middle' classname='classes.dividerColor'/>
+                    <Divider variant='middle' classname='classes.dividerColor' />
                 </Grid>
                 <Grid item>
-                    <TextField id="email" label="Email address" variant="outlined" margin='normal' fullWidth></TextField>
+                    <TextField placeholder='Email address' id= "email" variant = "outlined" fullWidth></TextField>
                 </Grid>
                 <Grid item>
                     <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
