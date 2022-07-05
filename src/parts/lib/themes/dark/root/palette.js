@@ -3,28 +3,28 @@ import {colors} from "../../colors";
 export const palette = {
     primary: {
         main: "#32C08D",
-        contrastText: "#FFFFFF",
+        contrastText: colors.white ,
     },
     secondary: {
-        main: "#3664F9",
+        main: colors.geekBlue[400],
         contrastText : colors.gray[400],
     },
     tertiary: {
-        main: "#7F5FFF",
+        main: colors.purple[400],
         contrastText: colors.gray[400],
     },
     info: {
-        main: "#7F5FFF",
+        main: colors.blue[400],
     },
     warning: {
-        main: "#FFCC26",
+        main: colors.yellow[400],
     },
 
     error: {
-        main: "#ff5c41",
+        main: colors.red[400],
     },
     default: {
-        main: "#bfbfbf",
+        main: colors.gray[400 ],
         contrastText :colors.white, 
     },
     mode: "dark",

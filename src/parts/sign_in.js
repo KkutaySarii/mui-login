@@ -1,19 +1,39 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import pic from "./images/vector.png";
-import { Button, Grid, Link, Typography, Box, IconButton, TextField } from '@material-ui/core';
+import { Button, Grid, Link, Typography, Box, IconButton, TextField, makeStyles } from '@material-ui/core';
 import GoogleButton from 'react-google-button';
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from "@mui/material/InputAdornment";
 import { colors } from './lib/themes/colors';
 import Divider from '@material-ui/core/Divider';
-import { useStyles } from './lib/extensions/use-style';
+import { usestyles } from './lib/extensions/use-style';
 
 
 
 export const Login = (isDarkTheme) => {
-    const classes = useStyles(isDarkTheme);
+    const useStyles = makeStyles(() => ({
+        root: {
+            '& > *': {
+                width: '100%'
+            },
+        },
+
+        paperRoot: {
+            backgroundColor: isDarkTheme ? colors.gray[900] : colors.white ,
+            padding: "40px 48px 40px 46px",
+            minWidth: "400px",
+            color: isDarkTheme ? colors.white  : colors.gray[900],
+        },
+        closeButton: {
+            color: isDarkTheme ? colors.white : colors.gray[400],
+        }
+    }));
+    const classes = useStyles();
+
+    // const classes = usestyles(isDarkTheme);
+
     const [values, setValues] = React.useState({
         amount: '',
         password: '',
@@ -57,19 +77,28 @@ export const Login = (isDarkTheme) => {
                     <TextField placeholder='Email address' id="email" variant="outlined" fullWidth></TextField>
                 </Grid>
                 <Grid item>
-                    <TextField placeholder="Password" id="password" type={values.showPassword ? 'text' : 'password'} value={values.password} variant="outlined" onChange={handleChange('password')} fullWidth InputProps={{
-                        endAdornment: <InputAdornment position="end">
-                            <IconButton classes={{ root: classes.closeButton, }}
-                                aria-label="toggle password visibility"
-                                onClick={handleClickShowPassword}
-                                onMouseDown={handleMouseDownPassword}
-                                edge="end"
-                            >
-                                {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                            </IconButton>
-                        </InputAdornment>
+                    <TextField
+                        placeholder="Password"
+                        id="password"
+                        type={values.showPassword ? 'text' : 'password'}
+                        value={values.password}
+                        variant="outlined"
+                        onChange={handleChange('password')}
+                        fullWidth
+                        InputProps={{
+                            endAdornment: <InputAdornment position="end">
+                                <IconButton
+                                    className={classes.closeButton}
+                                    aria-label="toggle password visibility"
+                                    onClick={handleClickShowPassword}
+                                    onMouseDown={handleMouseDownPassword}
+                                    edge="end"
+                                >
+                                    {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                                </IconButton>
+                            </InputAdornment>
 
-                    }}></TextField>
+                        }}></TextField>
                 </Grid>
                 <Grid item align='left'>
                     <Link

@@ -1,3 +1,5 @@
+import {colors} from "../../colors";
+
 export const palette = {
     primary: {
         main: "#32C08D",
@@ -5,6 +7,7 @@ export const palette = {
     },
     secondary: {
         main: "#3664F9",
+        contrastText: colors.purple[500],
     },
     tertiary: {
         main: "#7F5FFF",

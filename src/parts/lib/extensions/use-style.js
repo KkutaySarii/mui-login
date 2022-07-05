@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core";
 import { colors } from "../themes/colors";
 
-export const useStyles = makeStyles((isDarkTheme) => ({
+export const usestyles = makeStyles((isDarkTheme) => ({
     root: {
         '& > *': {
             width: '100%'
@@ -15,6 +15,6 @@ export const useStyles = makeStyles((isDarkTheme) => ({
         color: isDarkTheme ? colors.white : colors.gray[900],
     },
     closeButton: {
-        color: colors.white,
+        color: colors.green[400],
     }
 }));

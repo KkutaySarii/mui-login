@@ -1,29 +1,30 @@
+import { colors } from "../../colors";
+
 export const MuiTextField  = {
     root: {
         '& label': {
-            color: '#A0A0A0',
+            color: colors.gray[500],
         },
         '& label.Mui-focused': {
-            color: '#BFBFBF',
-            borderBottomColor: '#636363',
+            color:  colors.gray[400],
+            borderBottomColor: colors.gray[400],
         },
         '& input ': {
-            color: '#FFFFFF',
+            color: colors.gray[900],
         },
         '& .MuiInput-underline:after': {
-            borderBottomColor: '#636363',
+            borderBottomColor: colors.gray[400],
         },
         '& .MuiOutlinedInput-root': {
             '& fieldset': {
-                borderColor: '#BFBFBF',
+                borderColor:  colors.gray[400],
             },
             '&:hover fieldset': {
-                borderColor: '#A0A0A0',
+                borderColor: colors.purple[500],
             },
             '&.Mui-focused fieldset': {
-                borderColor: 'BFBFBF',
+                borderColor: colors.gray[400],
             },
-
         },
     },
 };

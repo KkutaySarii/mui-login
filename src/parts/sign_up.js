@@ -1,16 +1,34 @@
-import { Box, Button, Divider, Grid, Link, Paper, TextField, Typography } from "@material-ui/core";
+import { Box, Button, Divider, Grid, Link, Paper, TextField, Typography, makeStyles } from "@material-ui/core";
 import pic from './images/n_img.png';
 import GoogleButton from 'react-google-button';
-import { useStyles } from "./lib/extensions/use-style";
+import { colors } from './lib/themes/colors';
+import { usestyles } from "./lib/extensions/use-style";
 
 
 
 export const SignPage = (isDarkTheme) => {
+    const useStyles = makeStyles(() => ({
+        root: {
+            '& > *': {
+                width: '100%'
+            },
+        },
 
-    const classes = useStyles(isDarkTheme);
+        paperRoot: {
+            backgroundColor: isDarkTheme ? colors.gray[900] : colors.white,
+            padding: "40px 48px 40px 46px",
+            minWidth: "400px",
+            color: isDarkTheme ? colors.white : colors.gray[900],
+        },
+        closeButton: {
+            color: isDarkTheme ? colors.white : colors.gray[400],
+        }
+    }));
+    const classes = useStyles();
+    //const classes = usestyles(isDarkTheme);
     return (
         <Paper className={classes.paperRoot} elevation={10} >
-            <Grid container direction="row" justifyContent="center" spacing={10}>
+            <Grid container direction="row" alignItems="center" justifyContent="center" spacing={10}>
                 <Grid item >
                     <Box align="center">
                         <img alt="img" src={pic} />
@@ -30,7 +48,7 @@ export const SignPage = (isDarkTheme) => {
                         <Grid item>
                             <Divider />
                         </Grid>
-                        <Grid item>
+                        <Grid item >
                             <Grid container direction="row" justifyContent="space-between" alignItems="stretch" >
                                 <Grid item xs={6} sm={6}>
                                     <TextField
@@ -48,10 +66,10 @@ export const SignPage = (isDarkTheme) => {
                                 </Grid>
                             </Grid>
                         </Grid>
-                        <Grid item>
+                        <Grid item >
                             <TextField id="email" label="Email address" variant="outlined" margin='normal' fullWidth />
                         </Grid>
-                        <Grid item>
+                        <Grid item >
                             <TextField id="password" label="Password" variant="outlined" margin='normal' fullWidth />
                         </Grid>
                         <Grid item align='left'>

@@ -1,11 +1,34 @@
-import { Box, Button, Grid, MenuItem, Paper, TextField, Typography } from "@material-ui/core";
+import { Box, Button, Grid, MenuItem, Paper, TextField, Typography, makeStyles } from "@material-ui/core";
 import React, { useState } from "react";
 import pic from './images/tell_us.png';
-import { useStyles } from "./lib/extensions/use-style";
+import { colors } from './lib/themes/colors';
+import { usestyles } from "./lib/extensions/use-style";
 
 export const BaseCom = (isDarkTheme) => {
+    const useStyles = makeStyles(() => ({
+        root: {
+            '& > *': {
+                width: '100%'
+            },
+        },
 
-    const classes = useStyles(isDarkTheme);
+        paperRoot: {
+            backgroundColor: isDarkTheme ? colors.gray[900] : colors.white,
+            padding: "40px 72px 37px 72px",
+            minWidth: "400px",
+            color: isDarkTheme ? colors.white : colors.gray[900],
+        },
+        closeButton: {
+            color: colors.green[400],
+        },
+        viewButton:
+        {
+            backgroundColor:  isDarkTheme ? colors.gray[800]: colors.white,
+            '&:hover': {backgroundColor: isDarkTheme ? colors.gray[700] : colors.purple[100] },
+        }
+    }));
+    const classes = useStyles();
+    //const classes = usestyles(isDarkTheme);
     const [work, setWork] = useState('');
     const [business, setBusiness] = useState('');
     const [people, setPeople] = useState('');
@@ -57,7 +80,7 @@ export const BaseCom = (isDarkTheme) => {
                     </Button>
                 </Grid>
                 <Grid item>
-                    <Button variant="contained" fullWidth>
+                    <Button variant="text"  className= {classes.viewButton} fullWidth>
                         Skip for now
                     </Button>
                 </Grid>
