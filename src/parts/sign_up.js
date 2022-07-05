@@ -1,60 +1,13 @@
-import { Box, Button, CssBaseline, Divider, Grid, Link, Paper, TextField, Typography } from "@material-ui/core";
-import { makeStyles, MuiThemeProvider, withStyles } from '@material-ui/core/styles';
-import React, { useState } from "react";
-// import { darkTheme } from './themes/lib/dark/dark';
-// import { lightTheme } from './themes/lib/light/light';
-// import { App_bar } from './App_Bar';
+import { Box, Button, Divider, Grid, Link, Paper, TextField, Typography } from "@material-ui/core";
 import pic from './images/n_img.png';
 import GoogleButton from 'react-google-button';
-import { purple } from '@material-ui/core/colors';
-
-const ColorButton = withStyles((theme) => ({
-    root: {
-        width: '100%',
-        color: theme.palette.getContrastText(purple[500]),
-        backgroundColor: purple[500],
-        '&:hover': {
-            backgroundColor: purple[700],
-        },
-    },
-}))(Button);
+import { useStyles } from "./lib/extensions/use-style";
 
 
-// const SignUp = () => {
-//     const [isDarkTheme, setIsDarkTheme] = useState(true);
-
-//     return (
-//         <MuiThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
-//             <CssBaseline />
-//             <Box bgcolor="background.default">
-//                 {App_bar(isDarkTheme)}
-//                 <Grid container justifyContent="center" alignItems="center">
-//                     <Grid item md={8}>
-//                         {SignPage(isDarkTheme)}
-//                     </Grid>
-//                 </Grid>
-//             </Box>
-//         </MuiThemeProvider>
-//     );
-// };
-
-// export default SignUp;
 
 export const SignPage = (isDarkTheme) => {
-    const useStyles = makeStyles(() => ({
-        paperRoot: {
-            backgroundColor: isDarkTheme ? '#636363' : '#FFFFFFF',
-            padding: "40px 72px 37px 72px",
-            minWidth: "400px",
-            color: isDarkTheme ? '#FFFFFF' : '#121212',
-        },
-        root: {
-            '& > *': {
-                width: '100%',
-            },
-        },
-    }));
-    const classes = useStyles();
+
+    const classes = useStyles(isDarkTheme);
     return (
         <Paper className={classes.paperRoot} elevation={10} >
             <Grid container direction="row" justifyContent="center" spacing={10}>
@@ -75,7 +28,7 @@ export const SignPage = (isDarkTheme) => {
                             <GoogleButton style={{ width: '100%' }} onClick={() => { console.log('Google Button clicked') }} />
                         </Grid>
                         <Grid item>
-                            <Divider variant='middle' />
+                            <Divider />
                         </Grid>
                         <Grid item>
                             <Grid container direction="row" justifyContent="space-between" alignItems="stretch" >
@@ -102,7 +55,7 @@ export const SignPage = (isDarkTheme) => {
                             <TextField id="password" label="Password" variant="outlined" margin='normal' fullWidth />
                         </Grid>
                         <Grid item align='left'>
-                                <span >By registering, you agree to Monday Hero’s </span>
+                            <span >By registering, you agree to Monday Hero’s </span>
                             <Link
                                 style={{
                                     color: '#9C77DC',
@@ -124,11 +77,9 @@ export const SignPage = (isDarkTheme) => {
                             </Link>
                         </Grid>
                         <Grid item>
-                            <Box mt={2}>
-                                <ColorButton variant="contained" color="primary" fullWidth>
-                                    Login
-                                </ColorButton>
-                            </Box>
+                            <Button variant="contained" fullWidth>
+                                Login
+                            </Button>
                         </Grid>
                         <Grid item align="left">
                             <span>Already have an account? </span>

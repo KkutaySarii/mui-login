@@ -1,4 +1,3 @@
-import { alpha } from "@mui/material";
 import {colors} from "../../colors";
 
 export const palette = {
@@ -12,7 +11,7 @@ export const palette = {
     },
     tertiary: {
         main: "#7F5FFF",
-        contrastText: alpha(colors.gray[400], 50),
+        contrastText: colors.gray[400],
     },
     info: {
         main: "#7F5FFF",
@@ -26,7 +25,7 @@ export const palette = {
     },
     default: {
         main: "#bfbfbf",
-        contrastText :alpha("#FFFFFF", 50), 
+        contrastText :colors.white, 
     },
     mode: "dark",
 

@@ -7,20 +7,20 @@ export const MuiTextField = {
         },
         '& label.Mui-focused': {
             color: colors.gray[500],
-            borderBottomColor: colors.gray[700],
+            borderBottomColor: colors.gray[900],
         },
         '& input ': {
-            color: colors.gray[500],
+            color: colors.white,
         },
         '& .MuiInput-underline:after': {
             borderBottomColor: '#636363',
         },
         '& .MuiOutlinedInput-root': {
             '& fieldset': {
-                borderColor: '#A0A0A0',
+                borderColor: colors.gray[400],
             },
             '&:hover fieldset': {
-                borderColor: '#FFFFFF ',
+                borderColor: colors.white,
             },
             '&.Mui-focused fieldset': {
                 borderColor: colors.gray[400],

@@ -1,46 +1,19 @@
 import React from 'react';
 import Paper from '@material-ui/core/Paper';
 import pic from "./images/vector.png";
-import { Button, Grid, Link, Typography, Box, FormControl, InputLabel, OutlinedInput, IconButton, TextField } from '@material-ui/core';
+import { Button, Grid, Link, Typography, Box, IconButton, TextField } from '@material-ui/core';
 import GoogleButton from 'react-google-button';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 import InputAdornment from "@mui/material/InputAdornment";
 import { colors } from './lib/themes/colors';
 import Divider from '@material-ui/core/Divider';
-import clsx from 'clsx';
+import { useStyles } from './lib/extensions/use-style';
 
-const ColorButton = withStyles((t) => ({
-    root: {
-        width: '100%',
-        color: t.palette.getContrastText(colors.purple[500]),
-        backgroundColor: colors.purple[500],
-        '&:hover': {
-            backgroundColor: colors.purple[700],
-        },
-    },
-}))(Button);
+
 
 export const Login = (isDarkTheme) => {
-    const useStyles = makeStyles(() => ({
-        root: {
-            '& > *': {
-                width: '100%'
-            },
-        },
-
-        paperRoot: {
-            backgroundColor: isDarkTheme ? '#232323' : '#FFFFFFF',
-            padding: "40px 72px 37px 72px",
-            minWidth: "400px",
-            color: isDarkTheme ? '#FFFFFF' : '#121212',
-        },
-        dividerColor: {
-            backgroundColor: "#E2E2E2",
-        },
-    }));
-    const classes = useStyles();
+    const classes = useStyles(isDarkTheme);
     const [values, setValues] = React.useState({
         amount: '',
         password: '',
@@ -78,34 +51,25 @@ export const Login = (isDarkTheme) => {
                     <GoogleButton style={{ width: '100%' }} onClick={() => { console.log('Google Button clicked') }} />
                 </Grid>
                 <Grid item>
-                    <Divider variant='middle' classname='classes.dividerColor' />
+                    <Divider />
                 </Grid>
                 <Grid item>
-                    <TextField placeholder='Email address' id= "email" variant = "outlined" fullWidth></TextField>
+                    <TextField placeholder='Email address' id="email" variant="outlined" fullWidth></TextField>
                 </Grid>
                 <Grid item>
-                    <FormControl fullWidth className={clsx(classes.margin, classes.textField)} variant="outlined">
-                        <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-                        <OutlinedInput
-                            id="outlined-adornment-password"
-                            type={values.showPassword ? 'text' : 'password'}
-                            value={values.password}
-                            onChange={handleChange('password')}
-                            endAdornment={
-                                <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="toggle password visibility"
-                                        onClick={handleClickShowPassword}
-                                        onMouseDown={handleMouseDownPassword}
-                                        edge="end"
-                                    >
-                                        {values.showPassword ? <Visibility /> : <VisibilityOff />}
-                                    </IconButton>
-                                </InputAdornment>
-                            }
-                            labelWidth={70}
-                        />
-                    </FormControl>
+                    <TextField placeholder="Password" id="password" type={values.showPassword ? 'text' : 'password'} value={values.password} variant="outlined" onChange={handleChange('password')} fullWidth InputProps={{
+                        endAdornment: <InputAdornment position="end">
+                            <IconButton classes={{ root: classes.closeButton, }}
+                                aria-label="toggle password visibility"
+                                onClick={handleClickShowPassword}
+                                onMouseDown={handleMouseDownPassword}
+                                edge="end"
+                            >
+                                {values.showPassword ? <Visibility /> : <VisibilityOff />}
+                            </IconButton>
+                        </InputAdornment>
+
+                    }}></TextField>
                 </Grid>
                 <Grid item align='left'>
                     <Link
@@ -120,11 +84,9 @@ export const Login = (isDarkTheme) => {
                     </Link>
                 </Grid>
                 <Grid item>
-                    <Box mt={2}>
-                        <ColorButton variant="contained" color="primary" fullWidth>
-                            Login
-                        </ColorButton>
-                    </Box>
+                    <Button variant="contained" fullWidth>
+                        Login
+                    </Button>
                 </Grid>
                 <Grid item align="left">
                     <span>Don’t have an account? </span>
